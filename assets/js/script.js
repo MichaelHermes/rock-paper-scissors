@@ -33,6 +33,7 @@ function playGame() {
             // Determine the outcome of this game by comparing userInput to computerChoice.
             determineOutcome(userInput, computerChoice);
 
+            // Alert the current game's record to the user.
             alert(`Here are your standings:\n   Wins: ${record.wins}\n   Losses: ${record.losses}\n   Draws: ${record.draws}`);
         }
     } while (confirm("Would you like to play again?"));
@@ -54,7 +55,7 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-// 
+// Compares the user's choice to the computer's to determine an outcome and displays that outcome via an alert to the user.
 function determineOutcome(userInput, computerChoice) {
     console.log(`Player: ${userInput}, Computer: ${computerChoice}`);
 
