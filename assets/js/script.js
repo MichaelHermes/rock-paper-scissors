@@ -1,3 +1,5 @@
+var finishedMessage = document.querySelector("#thanksForPlaying");
+
 // Keep track of the current session's record.
 var record = {
     wins: 0,
@@ -13,13 +15,15 @@ function playGame() {
     var userInput;
     var computerChoice;
 
+    toggleFinishedMessage(false);
+
     // Continue playing new rounds until the user decides they are done.
     do {
         // First, ask for the user's input.
         userInput = prompt("Would you like to shoot Rock (R), Paper (P) or Scissors (S)?");
 
         // If the user chose to cancel, don't continue.
-        if (!userInput) { return; }
+        if (!userInput) { break; }
 
         userInput = userInput.toUpperCase();
         if (!rpsValues.includes(userInput)) {
@@ -37,6 +41,17 @@ function playGame() {
             alert(`Here are your standings:\n   Wins: ${record.wins}\n   Losses: ${record.losses}\n   Draws: ${record.draws}`);
         }
     } while (confirm("Would you like to play again?"));
+
+    toggleFinishedMessage(true);
+}
+
+function toggleFinishedMessage(show) {
+    if (show) {
+        document.getElementById("thanksForPlaying").style.display = "block";
+    }
+    else {
+        document.getElementById("thanksForPlaying").style.display = "none";
+    }
 }
 
 // Gets a random value for the computer's shoot.
@@ -98,6 +113,3 @@ function determineOutcome(userInput, computerChoice) {
         }
     }
 }
-
-// Start the game
-playGame();
